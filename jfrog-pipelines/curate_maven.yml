@@ -1,0 +1,37 @@
+resources:
+  - name: curate_maven_webhook
+    type: IncomingWebhook
+    configuration:
+      webhookName: curate_maven
+
+pipelines:
+  - name: CurateMaven
+    configuration:
+      environmentVariables:
+        readOnly:
+          local_repo_name: example-maven-local
+          remote_repo_name: example-maven-remote
+    steps:
+    - name: ExampleStep
+      type: Bash
+      configuration:
+        integrations:
+          - name: artifactory
+        inputResources:
+          - name: curate_maven_webhook
+          - name: curation_gitrepo
+            trigger: false
+        runtime:
+          type: image
+          image:
+           auto:
+            language: java
+            versions:
+              - "17"
+      execution:
+          onExecute:
+            - mvn -version
+            - python3 --version
+            - ls -lR
+            - cp ./dependencyState/resources/curation_gitrepo/curate_maven.py .
+            - python3 curate_maven.py

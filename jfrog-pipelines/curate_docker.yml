@@ -1,0 +1,29 @@
+resources:
+  - name: curate_docker_webhook
+    type: IncomingWebhook
+    configuration:
+      webhookName: curate_docker
+
+pipelines:
+  - name: CurateDocker
+    configuration:
+      environmentVariables:
+        readOnly:
+          local_repo_name: example-docker-local
+          remote_repo_name: example-docker-remote
+    steps:
+    - name: ExampleStep
+      type: Bash
+      configuration:
+        integrations:
+          - name: artifactory
+        inputResources:
+          - name: curate_docker_webhook
+          - name: curation_gitrepo
+            trigger: false
+      execution:
+          onExecute:
+            - python3 --version
+            - ls -lR
+            - cp ./dependencyState/resources/curation_gitrepo/curate_docker.py .
+            - python3 curate_docker.py
