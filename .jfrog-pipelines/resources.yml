@@ -2,7 +2,7 @@ resources:
   - name: curation_gitrepo
     type: GitRepo
     configuration:
-      gitProvider: bitbucket_integration
-      path: sle/examples-curation-workflows
+      gitProvider: githubcurationexample
+      path: anubhavkul/examples-curation-workflows
       branches:
         include: main
