@@ -1,0 +1,10 @@
+{
+  "image": "example.jfrog.io/example-docker-remote/library/alpine:latest",
+  "images": [
+    "example.jfrog.io/example-docker-remote/bitnami/redis:latest",
+    "example.jfrog.io/example-docker-remote/bitnami/redis:3.2.3-r1",
+    "example.jfrog.io/example-docker-remote/library/python:3.11-alpine",
+    "example.jfrog.io/example-docker-remote/conda/miniconda3:latest"
+  ]
+}
+
