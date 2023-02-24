@@ -1,5 +1,5 @@
 {
-  "image": "example.jfrog.io/example-docker-remote/library/alpine:latest",
+  "image": "rcjfrogpoc.jfrog.io/example-docker-remote/library/alpine:latest",
   "images": [
     "rcjfrogpoc.jfrog.io/example-docker-remote/bitnami/redis:latest",
     "rcjfrogpoc.jfrog.io/example-docker-remote/bitnami/redis:3.2.3-r1",
