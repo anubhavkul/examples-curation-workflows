@@ -1,9 +1,8 @@
 resources:
-  - name: curate_docker_webhook
+  - name: curate_docker
     type: IncomingWebhook
     configuration:
       webhookName: curate_docker
-
 pipelines:
   - name: CurateDocker
     configuration:
@@ -18,7 +17,7 @@ pipelines:
         integrations:
           - name: artifactory
         inputResources:
-          - name: curate_docker_webhook
+          - name: curate_docker
           - name: curation_gitrepo
             trigger: false
       execution:
